@@ -1,5 +1,9 @@
 package main
 
+import (
+	"github.com/RINUX999/InfoMate/models"
+)
+
 func main() {
 	/*
 		db.Connect()
@@ -24,4 +28,6 @@ func main() {
 
 	fmt.Printf("DOS: \n%d \n%s \n%s \n%s \n%s", caracteristicas.GetIdCaracteristicas(), caracteristicas.GetTitulo(), caracteristicas.GetTexto(), caracteristicas.GetUrlImg(), caracteristicas.GetTipo())
 	*/
+	origen := models.NewOrigen(1, "CALCULUS", "SPIVACK", 123)
+	origen.ToString()
 }
