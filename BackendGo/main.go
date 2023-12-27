@@ -28,6 +28,6 @@ func main() {
 
 	fmt.Printf("DOS: \n%d \n%s \n%s \n%s \n%s", caracteristicas.GetIdCaracteristicas(), caracteristicas.GetTitulo(), caracteristicas.GetTexto(), caracteristicas.GetUrlImg(), caracteristicas.GetTipo())
 	*/
-	origen := models.NewOrigen(1, "CALCULUS", "SPIVACK", 123)
-	origen.ToString()
+	ver := models.NewVer(1, "kfkfkfkf", "fdfjfjdjfjf")
+	ver.ToString()
 }
