@@ -1,7 +1,9 @@
 package main
 
 import (
+	"github.com/RINUX999/InfoMate/db"
 	"github.com/RINUX999/InfoMate/models"
+	dao "github.com/RINUX999/InfoMate/models/DAO"
 )
 
 func main() {
@@ -28,6 +30,21 @@ func main() {
 
 	fmt.Printf("DOS: \n%d \n%s \n%s \n%s \n%s", caracteristicas.GetIdCaracteristicas(), caracteristicas.GetTitulo(), caracteristicas.GetTexto(), caracteristicas.GetUrlImg(), caracteristicas.GetTipo())
 	*/
-	ver := models.NewVer(1, "kfkfkfkf", "fdfjfjdjfjf")
-	ver.ToString()
+	/*
+		ver := models.NewVer(1, "kfkfkfkf", "fdfjfjdjfjf")
+		ver.ToString()
+	*/
+	//models.Ver()
+	db.Connect()
+	db.Ping()
+
+	var id int64
+	id = 1
+	caracteristicas := dao.NewCaracteristicas(id, "Teorema de Role", "Existe un punto", "../Imagenes", "teorema")
+	origen := dao.NewOrigen(id, "Calculus", "Spivack", 39)
+	ver := dao.NewVer(id, "../Pdfs", "kfdomiroedpocmeimceoimdimcer")
+	infoMate := models.CreateInfoMate(id, *caracteristicas, *origen, *ver)
+	infoMate.Insert()
+
+	defer db.Close()
 }

@@ -42,3 +42,21 @@ func ExisteTabla(tableName string) bool {
 	}
 	return rows.Next()
 }
+
+// Polimorfismo a Exec
+func Exec(query string, args ...interface{}) (sql.Result, error) {
+	result, err := db.Exec(query, args...)
+	if err != nil {
+		fmt.Println(err)
+	}
+	return result, err
+}
+
+// Polimorfismo a Query
+func Query(query string, args ...interface{}) (*sql.Rows, error) {
+	rows, err := db.Query(query, args...)
+	if err != nil {
+		fmt.Println(err)
+	}
+	return rows, err
+}
