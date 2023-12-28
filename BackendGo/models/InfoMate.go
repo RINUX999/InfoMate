@@ -139,3 +139,31 @@ func GetInfoMate(id int64) *InfoMate {
 
 	return infoMate
 }
+
+// Actualizar un registro
+func (infoMate *InfoMate) Update() {
+
+	//Actualizando Caracteristicas
+	sql := "UPDATE Caracteristicas SET id_caracteristicas=? ,titulo=?,texto=?,url_imagen_texto=?,tipo=? WHERE id_caracteristicas=?"
+	db.Exec(sql, infoMate.Caracteristicas.Id_caracteristicas, infoMate.Caracteristicas.Titulo, infoMate.Caracteristicas.Texto, infoMate.Caracteristicas.Url_imagen_texto, infoMate.Caracteristicas.Tipo, infoMate.Id)
+
+	//Actualizando Origen
+	sql = "UPDATE Origen SET id_origen=?,libro=?,autor=?,pagina=?  WHERE id_origen=?"
+	db.Exec(sql, infoMate.Origen.Id_origen, infoMate.Origen.Libro, infoMate.Origen.Autor, infoMate.Origen.Pagina, infoMate.Id)
+
+	//Actualizando Ver
+	sql = "UPDATE Ver SET  id_ver=?,url_pdf=?,codigo_latex=? WHERE id_ver=?"
+	db.Exec(sql, infoMate.Ver.Id_ver, infoMate.Ver.Url_pdf, infoMate.Ver.Codigo_latex, infoMate.Id)
+}
+
+// ELiminar registro
+func (infoMate *InfoMate) Delete() {
+	sql := "DELETE FROM InfoMate WHERE id=?"
+	db.Exec(sql, infoMate.Id)
+	sql = "DELETE FROM Caracteristicas WHERE id_caracteristicas=?"
+	db.Exec(sql, infoMate.Id)
+	sql = "DELETE FROM Origen WHERE id_origen=?"
+	db.Exec(sql, infoMate.Id)
+	sql = "DELETE FROM Ver WHERE id_ver=?"
+	db.Exec(sql, infoMate.Id)
+}

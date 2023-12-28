@@ -1,10 +1,9 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/RINUX999/InfoMate/db"
 	"github.com/RINUX999/InfoMate/models"
+	dao "github.com/RINUX999/InfoMate/models/DAO"
 )
 
 func main() {
@@ -40,21 +39,18 @@ func main() {
 	db.Connect()
 	db.Ping()
 	defer db.Close()
-	/*
-		var id int64
-		id = 2
-		caracteristicas := dao.NewCaracteristicas(id, "Teorema de Role", "Existe un punto", "../Imagenes", "teorema")
-		origen := dao.NewOrigen(id, "Calculus", "Spivack", 39)
-		ver := dao.NewVer(id, "../Pdfs", "kfdomiroedpocmeimceoimdimcer")
-		infoMate := models.CreateInfoMate(id, *caracteristicas, *origen, *ver)
-		infoMate.Insert()
-	*/
+
+	var id int64
+	id = 3
+	caracteristicas := dao.NewCaracteristicas(id, "Teorema de Role", "Existe un punto", "../Imagenes", "Lema")
+	origen := dao.NewOrigen(id, "Calculus", "Spivack", 50)
+	ver := dao.NewVer(id, "../Pdfs", "LLLLLLLLLLLLLLLLLLLLLLLLL")
+	infoMate := models.CreateInfoMate(id, *caracteristicas, *origen, *ver)
+	//infoMate.Insert()
 	/*
 		listaInfoMates := models.ListInfoMates()
 		for index, value := range listaInfoMates {
 			fmt.Printf("%d: %v \n", index, value)
 		}*/
-	var id int64
-	id = 2
-	fmt.Println(models.GetInfoMate(id))
+	infoMate.Delete()
 }
