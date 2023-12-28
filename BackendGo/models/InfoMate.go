@@ -74,7 +74,7 @@ func ListInfoMates() InfoMates {
 	}
 	cont = 0
 
-	//Obteniendo los valores de origen
+	//Obteniendo los valores de ver
 	sql = "SELECT id_ver,url_pdf,codigo_latex FROM Ver"
 	rows, _ = db.Query(sql)
 
@@ -96,6 +96,46 @@ func ListInfoMates() InfoMates {
 		infoMates[cont] = infoMate
 		cont += 1
 	}
-
 	return infoMates
+}
+
+// Obtener un registro
+func GetInfoMate(id int64) *InfoMate {
+	caracteristicas := dao.NewCaracteristicas(0, "", "", "", "")
+	origen := dao.NewOrigen(0, "", "", 0)
+	ver := dao.NewVer(0, "", "")
+	infoMate := NewInfoMate(0, *caracteristicas, *origen, *ver)
+	//Obteniendo Caracteristicas
+	sql := "SELECT id_caracteristicas,titulo,texto,url_imagen_texto,tipo FROM Caracteristicas WHERE id_caracteristicas=?"
+	rows, _ := db.Query(sql, id)
+
+	for rows.Next() {
+		rows.Scan(&infoMate.Caracteristicas.Id_caracteristicas, &infoMate.Caracteristicas.Titulo, &infoMate.Caracteristicas.Texto, &infoMate.Caracteristicas.Url_imagen_texto, &infoMate.Caracteristicas.Tipo)
+	}
+
+	//Obteniendo los valores de origen
+	sql = "SELECT id_origen,libro,autor,pagina FROM Origen WHERE id_origen=?"
+	rows, _ = db.Query(sql, id)
+
+	for rows.Next() {
+		rows.Scan(&infoMate.Origen.Id_origen, &infoMate.Origen.Libro, &infoMate.Origen.Autor, &infoMate.Origen.Pagina)
+	}
+
+	//Obteniendo los valores de ver
+	sql = "SELECT id_ver,url_pdf,codigo_latex FROM Ver WHERE id_ver=?"
+	rows, _ = db.Query(sql, id)
+
+	for rows.Next() {
+		rows.Scan(&infoMate.Ver.Id_ver, &infoMate.Ver.Url_pdf, &infoMate.Ver.Codigo_latex)
+	}
+
+	//Obteniendo el id de InfoMate
+	sql = "SELECT id FROM InfoMate WHERE id=?"
+	rows, _ = db.Query(sql, id)
+
+	for rows.Next() {
+		rows.Scan(&infoMate.Id)
+	}
+
+	return infoMate
 }

@@ -49,8 +49,12 @@ func main() {
 		infoMate := models.CreateInfoMate(id, *caracteristicas, *origen, *ver)
 		infoMate.Insert()
 	*/
-	listaInfoMates := models.ListInfoMates()
-	for index, value := range listaInfoMates {
-		fmt.Printf("%d: %v \n", index, value)
-	}
+	/*
+		listaInfoMates := models.ListInfoMates()
+		for index, value := range listaInfoMates {
+			fmt.Printf("%d: %v \n", index, value)
+		}*/
+	var id int64
+	id = 2
+	fmt.Println(models.GetInfoMate(id))
 }
