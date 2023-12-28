@@ -28,7 +28,7 @@ func NewInfoMate(id int64, caracteristicas dao.Caracteristicas, origen dao.Orige
 // Crear Usuario e Insertar
 func CreateInfoMate(id int64, caracteristicas dao.Caracteristicas, origen dao.Origen, ver dao.Ver) *InfoMate {
 	infoMate := NewInfoMate(id, caracteristicas, origen, ver)
-	//infoMate.Save()
+	infoMate.Save()
 	return infoMate
 }
 
@@ -154,6 +154,14 @@ func (infoMate *InfoMate) Update() {
 	//Actualizando Ver
 	sql = "UPDATE Ver SET  id_ver=?,url_pdf=?,codigo_latex=? WHERE id_ver=?"
 	db.Exec(sql, infoMate.Ver.Id_ver, infoMate.Ver.Url_pdf, infoMate.Ver.Codigo_latex, infoMate.Id)
+}
+
+func (infoMate *InfoMate) Save() {
+	if infoMate.Id == 0 {
+		infoMate.Insert()
+	} else {
+		infoMate.Update()
+	}
 }
 
 // ELiminar registro
