@@ -3,10 +3,10 @@ package dao
 import "fmt"
 
 type Origen struct {
-	Id_origen int64
-	Libro     string
-	Autor     string
-	Pagina    int32
+	Id_origen int64  `json:"id_origen"`
+	Libro     string `json:"libro"`
+	Autor     string `json:"autor"`
+	Pagina    int32  `json:"pagina"`
 }
 
 func NewOrigen(id_origen int64, libro string, autor string, pagina int32) *Origen {

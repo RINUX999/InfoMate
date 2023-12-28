@@ -6,10 +6,10 @@ import (
 )
 
 type InfoMate struct {
-	Id              int64
-	Caracteristicas dao.Caracteristicas
-	Origen          dao.Origen
-	Ver             dao.Ver
+	Id              int64               `json:"id"`
+	Caracteristicas dao.Caracteristicas `json:"carcteristicas"`
+	Origen          dao.Origen          `json:"origen"`
+	Ver             dao.Ver             `json:"ver"`
 }
 
 type InfoMates []InfoMate

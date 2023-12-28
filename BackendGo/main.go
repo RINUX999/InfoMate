@@ -1,56 +1,24 @@
 package main
 
 import (
-	"github.com/RINUX999/InfoMate/db"
-	"github.com/RINUX999/InfoMate/models"
-	dao "github.com/RINUX999/InfoMate/models/DAO"
+	"fmt"
+	"log"
+	"net/http"
+
+	"github.com/RINUX999/InfoMate/handlers"
+	"github.com/gorilla/mux"
 )
 
 func main() {
-	/*
-		db.Connect()
-		defer db.Close()
-		if db.ExisteTabla("InfoMatef") {
-			fmt.Println("La tabla existe")
-		} else {
-			fmt.Println("La tabla no existe")
-		}
-	*/
-	/*CARACTERISTICAS
-	caracteristicas := models.NewCaracteristicas(1, "Teorema Fundamental para las integrales dobles", "Si integral f(x) dx existe y ... ", "../Imagenes", "Teorema")
+	//Rutas
+	mux := mux.NewRouter()
+	//EndPoind
+	mux.HandleFunc("/api/infoMate/", handlers.GetInfoMates).Methods("GET")
+	mux.HandleFunc("/api/infoMate/{id:[0-9]+}", handlers.GetInfoMate).Methods("GET")
+	mux.HandleFunc("/api/infoMate/", handlers.CreateInfoMate).Methods("POST")
+	mux.HandleFunc("/api/infoMate/{id:[0-9]+}", handlers.UpdateInfoMate).Methods("PUT")
+	mux.HandleFunc("/api/infoMate/{id:[0-9]+}", handlers.DeleteInfoMate).Methods("DELETE")
+	fmt.Println("Servidor ejecutandose en 8080")
+	log.Fatal(http.ListenAndServe(":8080", mux))
 
-	caracteristicas.ToString()
-	fmt.Printf("UNO: \n%d \n%s \n%s \n%s \n%s\n", caracteristicas.GetIdCaracteristicas(), caracteristicas.GetTitulo(), caracteristicas.GetTexto(), caracteristicas.GetUrlImg(), caracteristicas.GetTipo())
-
-	caracteristicas.SetIdCaracteristicas(2)
-	caracteristicas.SetTitulo("Otro")
-	caracteristicas.SetTexto("HSHDHDHDHF FJDHDH")
-	caracteristicas.SetUrlImg("../DDKKDK")
-	caracteristicas.SetTipo("Lemma")
-
-	fmt.Printf("DOS: \n%d \n%s \n%s \n%s \n%s", caracteristicas.GetIdCaracteristicas(), caracteristicas.GetTitulo(), caracteristicas.GetTexto(), caracteristicas.GetUrlImg(), caracteristicas.GetTipo())
-	*/
-	/*
-		ver := models.NewVer(1, "kfkfkfkf", "fdfjfjdjfjf")
-		ver.ToString()
-	*/
-	//models.Ver()
-
-	db.Connect()
-	db.Ping()
-	defer db.Close()
-
-	var id int64
-	id = 3
-	caracteristicas := dao.NewCaracteristicas(id, "Teorema de Role", "Existe un punto", "../Imagenes", "Lema")
-	origen := dao.NewOrigen(id, "Calculus", "Spivack", 50)
-	ver := dao.NewVer(id, "../Pdfs", "LLLLLLLLLLLLLLLLLLLLLLLLL")
-	infoMate := models.CreateInfoMate(id, *caracteristicas, *origen, *ver)
-	//infoMate.Insert()
-	/*
-		listaInfoMates := models.ListInfoMates()
-		for index, value := range listaInfoMates {
-			fmt.Printf("%d: %v \n", index, value)
-		}*/
-	infoMate.Delete()
 }

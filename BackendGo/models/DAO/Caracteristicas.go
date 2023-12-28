@@ -3,11 +3,11 @@ package dao
 import "fmt"
 
 type Caracteristicas struct {
-	Id_caracteristicas int64
-	Titulo             string
-	Texto              string
-	Url_imagen_texto   string
-	Tipo               string
+	Id_caracteristicas int64  `json:"id_caracteristicas"`
+	Titulo             string `json:"titulo"`
+	Texto              string `json:"texto"`
+	Url_imagen_texto   string `json:"url_imagen_texto"`
+	Tipo               string `json:"tipo"`
 }
 
 func NewCaracteristicas(id_caracteristicas int64, titulo string, texto string, url_imagen_texto string, tipo string) *Caracteristicas {

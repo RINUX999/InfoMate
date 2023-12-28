@@ -3,9 +3,9 @@ package dao
 import "fmt"
 
 type Ver struct {
-	Id_ver       int64
-	Url_pdf      string
-	Codigo_latex string
+	Id_ver       int64  `json:"id_ver"`
+	Url_pdf      string `json:"url_pdf"`
+	Codigo_latex string `json:"codigo_latex"`
 }
 
 func NewVer(id_ver int64, url_pdf string, codigo_latex string) *Ver {
