@@ -1,0 +1,14 @@
+
+.body{
+    background-image: url('../img/fondo_login.jpg');
+    /* o tambien */
+    background-size: 100px 200px; 
+    /* o incluso con porcentajes */
+    background-size: 50% auto;   
+    background-size: cover;  
+}
+
+input{
+    text-decoration: none;
+    outline: none;
+}
