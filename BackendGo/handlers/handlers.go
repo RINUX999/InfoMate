@@ -11,7 +11,13 @@ import (
 	"github.com/gorilla/mux"
 )
 
+func enableCors(w *http.ResponseWriter) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
+}
+
 func GetInfoMates(rw http.ResponseWriter, r *http.Request) {
+
+	enableCors(&rw)
 
 	rw.Header().Set("Content-Type", "application/json")
 

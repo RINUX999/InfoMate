@@ -18,7 +18,7 @@ func main() {
 	mux.HandleFunc("/api/infoMate/", handlers.CreateInfoMate).Methods("POST")
 	mux.HandleFunc("/api/infoMate/{id:[0-9]+}", handlers.UpdateInfoMate).Methods("PUT")
 	mux.HandleFunc("/api/infoMate/{id:[0-9]+}", handlers.DeleteInfoMate).Methods("DELETE")
-	fmt.Println("Servidor ejecutandose en 8080")
-	log.Fatal(http.ListenAndServe(":8080", mux))
+	fmt.Println("Servidor ejecutandose en 9898")
+	log.Fatal(http.ListenAndServe(":9898", mux))
 
 }

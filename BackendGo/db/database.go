@@ -9,6 +9,8 @@ import (
 
 const url = "rifardo:RIfardo999@tcp(localhost:3306)/InfoMateDB"
 
+//const url = "root:-AB4ec1h2E1E4FhbAEaaH-FdgGgFCAa2@tcp(roundhouse.proxy.rlwy.net:43596)/railway"
+
 var db *sql.DB
 
 // Realizar la conexion

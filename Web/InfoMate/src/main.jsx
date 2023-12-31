@@ -12,6 +12,7 @@ import Index from './pages/Index'
 import Nuevo from './pages/Nuevo'
 import Editar from './pages/Editar'
 import Eliminar from './pages/Eliminar'
+import VisualisadorPDF from './pages/VisualisadorPDF'
 
 //Layouts
 
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path:"/Eliminar",
     element: <Eliminar/>
+  },
+  {
+    path:"/Visualisador",
+    element:<VisualisadorPDF/>
   }
 ])
 

@@ -32,9 +32,9 @@ function Login() {
                   <form>
                     <fieldset className='flex flex-col p-5'>
                       <label for="" className='m-1 font-bold text-lg' >Name</label>
-                        <input type="text" id="name" name="name" defaultValue={name} onMouseOut={actualizarInputs}/>
+                        <input type="text" id="name" name="name" placeholder='name' onMouseOut={actualizarInputs}/>
                         <label for="" className='m-1 font-bold text-lg'>Password</label>
-                        <input type="text" id="password" name="password" defaultValue={password} onMouseOut={actualizarInputs}/>
+                        <input type="text" id="password" name="password" placeholder='password' onMouseOut={actualizarInputs}/>
                           <EnviarLogin name={name} password={password}/>
                     </fieldset>
                   </form>
