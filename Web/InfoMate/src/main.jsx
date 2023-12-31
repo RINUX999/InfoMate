@@ -9,6 +9,9 @@ import { createBrowserRouter,RouterProvider } from 'react-router-dom'
 //Comonentes 
 import Login from './pages/Login'
 import Index from './pages/Index'
+import Nuevo from './pages/Nuevo'
+import Editar from './pages/Editar'
+import Eliminar from './pages/Eliminar'
 
 //Layouts
 
@@ -20,6 +23,18 @@ const router = createBrowserRouter([
   },{
     path:"/",
     element:<Index/>
+  },
+  {
+    path:"/Nuevo",
+    element:<Nuevo/>
+  },
+  {
+    path:"/Editar",
+    element: <Editar/>
+  },
+  {
+    path:"/Eliminar",
+    element: <Eliminar/>
   }
 ])
 

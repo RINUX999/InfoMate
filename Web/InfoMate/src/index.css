@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.cerrar,.enviar{
+.cerrar,.enviar,.nav{
     cursor: pointer;
 }
 
