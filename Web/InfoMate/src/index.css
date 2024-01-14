@@ -2,8 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-.cerrar,.enviar,.nav,.icono-buscar,.iconos-buscador{
+.cerrar,.enviar,.nav,.icono-buscar,.iconos-buscador,.tarjeta{
     cursor: pointer;
 }
 
-
+.mostrarInfo{
+    overflow: scroll;
+    max-height: 88%;
+}
